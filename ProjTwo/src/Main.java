@@ -19,25 +19,30 @@ public class Main {
         System.out.println("Hello! What is your name?");
         String name = sc.next();
         System.out.println("Well, " + name + ", I am thinking of a number between 1 and 20.");
+        try {
+            int guess;
+            int randNum = rand.nextInt(20 - 1) + 1;
+            int counter = 0;
 
-        int guess;
-        int randNum = rand.nextInt(20-1) +1;
-        int counter = 0;
+            do {
+                System.out.println("Take a guess.");
+                guess = sc.nextInt();
+                counter++;
 
-        do {
-            System.out.println("Take a guess.");
-            guess = sc.nextInt();
-            counter++;
-
-            if (guess == randNum){
-                System.out.println("Good job, " + name + "! You guessed my number!");
-                System.out.println("You guessed it in " + counter + " tries!");
-            }	else if (randNum < guess){
-                System.out.println("Your guess is too high.");
-            } else if (randNum > guess) {
-                System.out.println("Your guess is too low.");
-            }
-        } while (guess != randNum && counter < 6);
-
+                if (guess == randNum) {
+                    System.out.println("Good job, " + name + "! You guessed my number!");
+                    System.out.println("You guessed it in " + counter + " tries!");
+                } else if (randNum < guess && guess > 20 ){
+                    System.out.println("Please enter a number between 1 and 20.");
+                } else if (randNum < guess) {
+                    System.out.println("Your guess is too high.");
+                } else if (randNum > guess) {
+                    System.out.println("Your guess is too low.");
+                }
+            } while (guess != randNum && counter < 6);
+        } catch (Exception e) {
+            System.out.println("Caught Exception: Please enter valid integer.");
+        }
     }
+
 }
