@@ -2,6 +2,9 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Main {
+
+    private static int guess;
+
     public static void main(String[] args) {
         char anotherGame;
         Scanner sca = new Scanner(System.in);
@@ -43,6 +46,11 @@ public class Main {
         } catch (Exception e) {
             System.out.println("Caught Exception: Please enter valid integer.");
         }
+    }
+
+    public static int getNumber(int i){
+        guess = i;
+        return guess;
     }
 
 }
